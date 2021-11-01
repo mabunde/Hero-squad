@@ -15,6 +15,11 @@ public class HeroTest {
         assertEquals(true, myHero instanceof Hero);
     }
     @Test
+    public void instantiatesWithHeroAge() {
+        Hero myHero = new Hero("superman", 36, "super strength", "crypto", "Infinity");
+        assertEquals(36, myHero.getHeroAge());
+    }
+    @Test
     public void instantiatesWithHeroName_String() {
         Hero myHero = new Hero("superman", 36, "super strength", "crypto", "Infinity");
         assertEquals("superman", myHero.getHeroName());
@@ -33,5 +38,8 @@ public class HeroTest {
     public void instantiatesWithHeroSquad() {
         Hero myHero = new Hero("superman", 36, "super strength", "love", "Infinity");
         assertEquals("Infinity", myHero.getHeroSquad());
+    }
+    @After
+    public void tearDown() throws Exception {
     }
 }

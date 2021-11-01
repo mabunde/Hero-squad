@@ -58,12 +58,15 @@ public class Hero {
         this.heroSquad = heroSquad;
     }
 
-    public static List<Hero> getInstances() {
+    public static List<Hero> all() {
         return instances;
     }
 
-    public static void setInstances(List<Hero> instances) {
+    public static void setInstances(List<Hero> all) {
         Hero.instances = instances;
+    }
+    public static void clear() {
+        instances.clear();
     }
 
 }
