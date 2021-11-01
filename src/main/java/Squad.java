@@ -19,5 +19,7 @@ public class Squad {
         heroes = new ArrayList<Hero>();
         currentSize = 0;
     }
-
+    public static List<Squad> all() {
+        return instances;
+    }
 }

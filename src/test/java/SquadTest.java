@@ -15,6 +15,14 @@ public class SquadTest {
         Squad mySquad = new Squad("marvel", "6", "computer illiteracy");
         assertEquals(true, mySquad instanceof Squad);
     }
+
+    @Test
+    public void all_returnsAllInstancesOfSquad_true() {
+        Squad firstSquad = new Squad("marvel", "6", "computer illiteracy");
+        Squad secondSquad = new Squad("Endgame", "5", "sexism");
+        assertEquals(true, Squad.all().contains(firstSquad));
+        assertEquals(true, Squad.all().contains(secondSquad));
+    }
     @After
     public void tearDown() throws Exception {
     }
