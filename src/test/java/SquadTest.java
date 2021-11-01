@@ -17,11 +17,17 @@ public class SquadTest {
     }
 
     @Test
-    public void all_returnsAllInstancesOfSquad_true() {
-        Squad firstSquad = new Squad("marvel", "6", "computer illiteracy");
-        Squad secondSquad = new Squad("Endgame", "5", "sexism");
-        assertEquals(true, Squad.all().contains(firstSquad));
-        assertEquals(true, Squad.all().contains(secondSquad));
+    public void returnsAllInstancesOfSquad_true() {
+        Squad fsquad = new Squad("marvel", "6", "computer illiteracy");
+        Squad squad = new Squad("Endgame", "5", "sexism");
+        assertEquals(true, Squad.all().contains(fsquad));
+        assertEquals(true, Squad.all().contains(squad));
+    }
+    @Test
+    public void clearSquadFromArray() {
+        Squad firstSquad = new Squad("Endgame", "5", "sexism");
+        Squad.clear();
+        assertEquals(Squad.all().size(), 0);
     }
     @After
     public void tearDown() throws Exception {

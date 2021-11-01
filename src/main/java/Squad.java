@@ -20,6 +20,10 @@ public class Squad {
         currentSize = 0;
     }
     public static List<Squad> all() {
+
         return instances;
+    }
+    public static void clear() {
+        instances.clear();
     }
 }
