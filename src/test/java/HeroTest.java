@@ -16,9 +16,22 @@ public class HeroTest {
     }
     @Test
     public void instantiatesWithHeroName_String() {
-        Hero myHero = new Hero("superman", 36, "Enhanced Senses", "fire balls", "Infinity");
+        Hero myHero = new Hero("superman", 36, "super strength", "crypto", "Infinity");
         assertEquals("superman", myHero.getHeroName());
     }
-
-
+    @Test
+    public void Hero_instantiatesWithHeroAbility_String() {
+        Hero myHero = new Hero("superman", 36, "super strength", "love", " Infinity");
+        assertEquals("super strength", myHero.getHeroAbility());
+    }
+    @Test
+    public void instantiatesWithHeroWeakness() {
+        Hero myHero = new Hero("superman", 36, "super strength", "love", " Infinity");
+        assertEquals("love", myHero.getHeroWeakness());
+    }
+    @Test
+    public void instantiatesWithHeroSquad() {
+        Hero myHero = new Hero("superman", 36, "super strength", "love", "Infinity");
+        assertEquals("Infinity", myHero.getHeroSquad());
+    }
 }
