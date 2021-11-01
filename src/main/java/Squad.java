@@ -10,9 +10,9 @@ public class Squad {
     private List<Hero> heroes;
     private int currentSize;
 
-    public Squad (String squad_name, String squad_size, String squad_cause){
+    public Squad (String squad_name, int squad_size, String squad_cause){
         squadName = squad_name;
-        maxSize = Integer.parseInt(squad_size);
+        maxSize = squad_size;
         squadCause = squad_cause;
         instances.add(this);
         mId = instances.size();
@@ -25,5 +25,12 @@ public class Squad {
     }
     public static void clear() {
         instances.clear();
+    }
+    public List<Hero> getHeroes() {
+        return heroes;
+    }
+    public void addHero(Hero newHero){
+        heroes.add(newHero);
+        currentSize++;
     }
 }
