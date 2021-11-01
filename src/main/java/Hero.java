@@ -65,4 +65,5 @@ public class Hero {
     public static void setInstances(List<Hero> instances) {
         Hero.instances = instances;
     }
+
 }
