@@ -1,38 +1,44 @@
-<div class="Hero">
-		    <div class="header">
-		        <i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;Add a new Hero.
-		    </div>
-		    <div class="panel-footer">
-		    	<form action="/newHero" method="post" name="heroForm">
-		    		<input class="form-control" type="text" placeholder="Enter Hero Name..." name="hero_name">
-			        <br><p class="label">Enter Hero's Age:</p>
-			        <input class="form-control" name="hero_age" placeholder="Enter Hero's Age..." type="number" />
-			        <select class="form-control" name="hero_ability" placeholder="Choose Special Ability">
-	                	<option label="Choose Special Ability"></option>
-		                <option value="Superhuman Strength">Superhuman Strength</option>
-		                <option value="Camouflage">Camouflage</option>
-		                <option value="Invisibility">Invisibility</option>
-		                <option value="Shape Shifting">Shape Shifting</option>
-		                <option value="Super Speed">Super Speed</option>
-		                <option value="Elemental control">Elemental control</option>
-		                <option value="Mind Control">Mind Control</option>
-		                <option value="Liquid Transmutation">Liquid Transmutation</option>
-		                <option value="Flight">Flight</option>
-		                <option value="Replication">Replication</option>
-
-		            </select>
-		            <select class="form-control" name="hero_weakness" data-placeholder="Choose Weakness">
-	                	<option label="Choose Weakness"></option>
-		                <option value="Loud Noises">Loud Noises</option>
-		                <option value="Excessive Speed">Excessive Speed</option>
-		                <option value="Pink Kryptonite">Pink Kryptonite</option>
-		                <option value="Over Confidence">Over Confidence</option>
-		                <option value="Women">Women</option>
-		                <option value="Fire">Fire</option>
-		            </select>
-		            <select class="form-control" name="hero_squad" data-placeholder="Assign a Squad">
-
-		             <br><button type="submit" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Add Character</button>
-		    	</form>
-		    </div>
-		</div>
+{{> "layout.hbs"}}
+<div class="row">
+<div class="col-md-4">
+          <div class="header">
+              <i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;Add a new Hero.
+          </div>
+          <div class="panel-footer">
+             <form action="/success" method="post" name="heroForm">
+                <input class="form-control" type="text" placeholder="Enter Hero Name..." name="hero_name">
+                 <p class="label">Enter Hero's Age:</p>
+                 <input class="form-control" name="hero_age" placeholder="Enter Hero's Age..." type="number" /><br>
+                 <select class="form-control" name="hero_ability" placeholder="Choose Special Ability">
+                      <option label="Choose Special Ability"></option>
+                      <option value="Superhuman Strength">Superhuman Strength</option>
+                      <option value="Camouflage">Camouflage</option>
+                      <option value="Invisibility">Invisibility</option>
+                      <option value="Shape Shifting">Shape Shifting</option>
+                      <option value="Super Speed">Super Speed</option>
+                      <option value="Elemental control">Elemental control</option>
+                      <option value="Mind Control">Mind Control</option>
+                      <option value="Liquid Transmutation">Liquid Transmutation</option>
+                      <option value="Flight">Flight</option>
+                      <option value="Replication">Replication</option>
+                  </select>
+                  <br>
+                  <select class="form-control" name="hero_weakness" data-placeholder="Choose Weakness">
+                      <option label="Choose Weakness"></option>
+                      <option value="Loud Noises">Loud Noises</option>
+                      <option value="Excessive Speed">Excessive Speed</option>
+                      <option value="Pink Kryptonite">Pink Kryptonite</option>
+                      <option value="Over Confidence">Over Confidence</option>
+                      <option value="Women">Women</option>
+                      <option value="Fire">Fire</option>
+                  </select>
+                  <br>
+                  <select class="form-control" name="hero_squad" data-placeholder="Assign a Squad">
+                  <option value="Avengers">Avengers</option>
+                  <option value="marvel">marvel</option>
+                  </select>
+                   <br><button type="submit" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Add Character</button>
+             </form>
+          </div>
+         </div>
+      </div>

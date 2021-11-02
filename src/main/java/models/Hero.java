@@ -1,3 +1,5 @@
+package models;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +9,7 @@ public class Hero {
     private String heroAbility;
     private String heroWeakness;
     private String heroSquad;
-    private static List<Hero> instances = new ArrayList<Hero>();
+    private static ArrayList<Hero> instances = new ArrayList<Hero>();
 
     public Hero(String hero_name, String hero_age, String ability, String weakness, String hero_squad){
         heroName = hero_name;

@@ -1,3 +1,5 @@
+package models;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,8 +34,17 @@ public class Squad {
     public List<Hero> getHeroes() {
         return heroes;
     }
-    public void addHero(Hero newHero){
-        heroes.add(newHero);
-        currentSize++;
+//    public void addHero(Hero newHero){
+//        heroes.add(newHero);
+//        currentSize++;
+//    }
+
+    public int getSize() {
+        return maxSize;
+    }
+    public void addHero(Hero hero) {
+        if (heroes.size()<this.getSize()) {
+            heroes.add(hero);
+        }
     }
 }

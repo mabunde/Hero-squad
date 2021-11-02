@@ -1,3 +1,19 @@
-<div>
 
-</div>
+{{#partial "content"}}
+
+
+<h1> List of Super Heros!</h1>
+
+{{#if heroes}}
+    {{#each heroes}}
+        <p><a href="/newHero/{{id}}">{{heroName}}</a></p>
+    {{/each}}
+{{else}}
+    <p>No Heros Found!</p>
+{{/if}}
+{{/partial}}
+{{#partial "footer"}}
+{{/partial}}
+{{>layout.hbs}}
+
+{{> "layout.hbs"}}
