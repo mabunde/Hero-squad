@@ -5,7 +5,7 @@
               <i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;Add a new Hero.
           </div>
           <div class="panel-footer">
-             <form action="/success" method="post" name="heroForm">
+             <form action="/newHero" method="post" name="heroForm">
                 <input class="form-control" type="text" placeholder="Enter Hero Name..." name="hero_name">
                  <p class="label">Enter Hero's Age:</p>
                  <input class="form-control" name="hero_age" placeholder="Enter Hero's Age..." type="number" /><br>
@@ -34,11 +34,54 @@
                   </select>
                   <br>
                   <select class="form-control" name="hero_squad" data-placeholder="Assign a Squad">
-                  <option value="Avengers">Avengers</option>
-                  <option value="marvel">marvel</option>
+                   {{#if $squad_hero }}
+                                   <option label="- Assign to Squad -"></option>
+                                     {{#each squad in squad_hero}}
+                                   <option value="$squad.getId()">$squad.getSquadName()</option>
+                                     {{/each}}
+                          {{else}}
+                                     <option label="- No Squads Created -"></option>
+                    {{/if}}
                   </select>
                    <br><button type="submit" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Add Character</button>
              </form>
           </div>
          </div>
+         <div class="col-md-8">
+             <div class="panel panel">
+                 <div class="panel-body">
+                     <h3>Heroes</h3>
+                     <hr>
+                     {{#if hero_squad}}
+                     <ul>
+                         {{#each hero in hero_squad}}
+                         <li>
+                             <h4 class="hero-name">{{hero.getName}} {{hero.getAge}}</h4>
+                             <small><strong class="text-success">Special Ability: </strong> {{ hero.getAbility}} | <strong class="text-danger">Weakness: </strong>{{hero.getWeakness}}</small>
+                         </li>
+                         {{/each}}
+                     </ul>
+                     {{else}}
+                         <span class="label label-warning">No Heroes Added Yet!</span>
+                     {{/if}}
+                 </div>
+             </div>
+             <div class="panel squads">
+                 <div class="panel-body">
+                     <h3>Squads / Team Ups</h3>
+                     <hr>
+                     {{#if squad_hero}}
+                     <ul>
+                         {{#each squad in squad_hero}}
+                         <li class="mt10">
+                             <small class="pull-right"><strong>Max Size: </strong>$squad.getMaxSize()</small>
+                             <h4 class="squad-name">$squad.getSquadName()</h4>
+                             <small>Cause / Motive: <strong>$squad.getSquadCause()</strong></small><br>
+                             <small><i class="fa fa-angle-right" aria-hidden="true"></i>&nbsp;&nbsp;<a href="/squad/$squad.getId()">View Squad Members</a></small>
+                         </li>
+                         {{/each}}
+                     </ul>
+                     {{/if}}
+                 </div>
+             </div>
       </div>

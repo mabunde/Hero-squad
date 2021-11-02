@@ -12,9 +12,9 @@ public class Squad {
     private List<Hero> heroes;
     private int currentSize;
 
-    public Squad (String squad_name, int squad_size, String squad_cause){
+    public Squad (String squad_name, String squad_size, String squad_cause){
         squadName = squad_name;
-        maxSize = squad_size;
+        Integer.parseInt(squad_size);
         squadCause = squad_cause;
         instances.add(this);
         mId = instances.size();

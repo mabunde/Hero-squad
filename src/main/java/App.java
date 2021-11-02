@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
@@ -32,20 +33,49 @@ public class App {
             return new ModelAndView(model, "squad.hbs");
         }, new HandlebarsTemplateEngine());
 
+
         //create a hero
-        post("/hero", (request, response) -> {
+//        post("/hero", (request, response) -> {
+//            Map<String, Object> model = new HashMap<String, Object>();
+//            String heroName = request.queryParams("hero_name");
+//            String heroAge = request.queryParams("hero_age");
+//            String heroAbility = request.queryParams("hero_ability");
+//            String heroWeakness = request.queryParams("hero_weakness");
+//            String heroSquad = request.queryParams("hero_squad");
+//            Squad newMember = Squad.find(Integer.parseInt(heroSquad));
+//            Hero newHero = new Hero(heroName,heroAge,heroAbility,heroWeakness,heroSquad);
+//            newMember.addHero(newHero);
+//            return new ModelAndView(model, "hero.hbs");
+//        }, new HandlebarsTemplateEngine());
+
+        post("/newHero", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             String heroName = request.queryParams("hero_name");
             String heroAge = request.queryParams("hero_age");
             String heroAbility = request.queryParams("hero_ability");
             String heroWeakness = request.queryParams("hero_weakness");
             String heroSquad = request.queryParams("hero_squad");
-            Squad newMember = Squad.find(Integer.parseInt(heroSquad));
-            Hero newHero = new Hero(heroName,heroAge,heroAbility,heroWeakness,heroSquad);
-            newMember.addHero(newHero);
-            return new ModelAndView(model, "hero.hbs");
+            Hero newHero = new Hero(heroName, heroAge, heroAbility, heroWeakness, heroSquad);
+            request.session().attribute("item",newHero);
+            model.put("item",request.session().attribute("newHero"));
+            return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
+
+        post("/createSquad", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            String squadName = request.queryParams("squad_name");
+            String squadSize = request.queryParams("squad_size");
+            String squadCause = request.queryParams("squad_cause");
+            Squad newSquad = new Squad(squadName,squadSize,squadCause);
+            model.put("item",request.session().attribute("newSquad"));
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
 //
+
+
+
 //        // create a squad
 //        post("/createSquad", (request, response) -> {
 //            Map<String, Object> model = new HashMap<String, Object>();
