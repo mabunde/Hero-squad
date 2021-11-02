@@ -3,13 +3,13 @@ import java.util.List;
 
 public class Hero {
     private String heroName;
-    private int heroAge;
+    private String heroAge;
     private String heroAbility;
     private String heroWeakness;
     private String heroSquad;
     private static List<Hero> instances = new ArrayList<Hero>();
 
-    public Hero(String hero_name, int hero_age, String ability, String weakness, String hero_squad){
+    public Hero(String hero_name, String hero_age, String ability, String weakness, String hero_squad){
         heroName = hero_name;
         heroAge = hero_age;
         heroAbility = ability;
@@ -26,11 +26,11 @@ public class Hero {
         this.heroName = heroName;
     }
 
-    public int getHeroAge() {
+    public String getHeroAge() {
         return heroAge;
     }
 
-    public void setHeroAge(int heroAge) {
+    public void setHeroAge(String heroAge) {
         this.heroAge = heroAge;
     }
 

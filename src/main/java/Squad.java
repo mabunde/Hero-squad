@@ -23,6 +23,9 @@ public class Squad {
 
         return instances;
     }
+    public static Squad find(int id) {
+        return instances.get(id - 1);
+    }
     public static void clear() {
         instances.clear();
     }
