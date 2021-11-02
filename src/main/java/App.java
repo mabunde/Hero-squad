@@ -72,6 +72,8 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
 
+
+
 //
 
 
@@ -110,10 +112,12 @@ public class App {
 //            return new ModelAndView(model, " ");
 //        }, new HandlebarsTemplateEngine());
 
-//        get("/heroes/form", (request, response) -> {
-//            Map<String, Object> model = new HashMap<String, Object>();
-//            model.put("squads",models.Squad.getSquads());
-//            return new ModelAndView(model, "HeroForm.hbs");
-//        }, new HandlebarsTemplateEngine());
+        get("/heroes", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            List<Hero> heroes = Hero.all();
+            model.put("heroes",heroes);
+            return new ModelAndView(model, "createdHero.hbs");
+        }, new HandlebarsTemplateEngine());
+        
     }
 }
