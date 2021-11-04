@@ -1,43 +1,51 @@
-{{#block "content"}}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>models.Hero models.Squad</title>
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
-    <link rel='stylesheet' href='/css/font-awesome.css'>
-    <link rel='stylesheet' href='/css/style.css'>
-</head>
- {{/block}}
-{{#block "content"}}
-<body>
+{{#block "footer"}}
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>{{#block "title"}}Squad hero{{/block}}</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+        <link rel='stylesheet' href="/css/style.css">
+    </head>
+    <body>
+{{/block}}
 
+<div class="header-container-fluid">
     <ul class="nav nav-tabs">
-            <li role="presentation" class="active"><a href="/">Home</a></li>
-            <li role="presentation"><a href="/newHero">Add a New Hero</a></li>
-            <li role="presentation"><a href="/newSquad">Add a New Squad</a></li>
+        <li role="presentation" class="active"><a href="/">Home</a></li>
+        <li role="presentation"><a href="/squads/list">All Squads</a></li>
+        <li role="presentation"><a href="/squads">New Squad</a></li>
+        <li role="presentation"><a href="/heroes">New Hero</a></li>
     </ul>
-    <div class="container">
+</div>
+<div class="container-fluid">
+    <!--begin main template-->
+    <div class="page-header">
+    <div>
+
+
     <div class="row">
-    <div class="col-md-4"id="img">
-     <image height="300" width="370" src="/images/mavel.gif" alt ="marvel gif">
+        <div class="col-md-4">
+        <img height="300" width="420" src="images/avengers.gif">
+        </div>
+        <div class="col-md-4">
+        <img height="300" width="420" src="images/mavel.gif">
+        </div>
+         <div class="col-md-4">
+         <img  height="300" width="420" src="images/spiderman.gif">
+         </div>
     </div>
-    <div class="col-md-4">
-       <image height="300" width="370"  src="/images/avengers.gif" alt ="marvel gif">
+
     </div>
-    <div class="col-md-4">
-      <image height="300" width="370"  src="/images/spiderman.gif" alt ="marvel gif">
+
+    <div class="col-md-12" id="content">
+        {{#block "content"}}
+        {{/block}}
+
     </div>
-    </div>
-   {{#block "footer"}}
-       <footer class="">
-           <div class="container1">
-           <hr>
-           </div>
-       </footer>
-       </div>
-       </body>
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-       </html>
-   {{/block}}
- {{/block}}
+</div>
+<!--end main template-->
+{{#block "footer"}}
+    </body>
+    </html>
+{{/block}}

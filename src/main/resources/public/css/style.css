@@ -1,5 +1,4 @@
-*{
-    color: #333;
+ *{
     background: #e4e7ea;
     background-color:rgb(52 78 54);
 }
@@ -10,6 +9,11 @@ h1 {
     font-size: 36px;
     color: white;
 }
+h5,p {
+color:white;
+}
+/*
+
 .heroheader{
 text-align:center;
 color:white;
@@ -43,3 +47,5 @@ option{
     border-radius: 3px;
     transition: all 0.2s ease-out 0s;
 }
+*/
+

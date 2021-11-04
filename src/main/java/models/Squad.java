@@ -4,47 +4,53 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Squad {
-    private String squadName;
-    private int maxSize;
+    private int squadId;
+    private String name;
     private String squadCause;
-    private static List<Squad> instances = new ArrayList<Squad>();
-    private int mId;
-    private List<Hero> heroes;
-    private int currentSize;
+    private int maxSize;
+    private static ArrayList<Squad> instances = new ArrayList<>();
+    private static ArrayList<Hero>  myHeroes = new ArrayList<>();
+    private List<Hero> squadHeroes = new ArrayList<>();
 
-    public Squad (String squad_name, String squad_size, String squad_cause){
-        squadName = squad_name;
-        Integer.parseInt(squad_size);
+    public Squad (String squad_name, String squad_cause){
+        name = squad_name;
+//        maxSize = size;
         squadCause = squad_cause;
+        this.myHeroes = new ArrayList<>();
         instances.add(this);
-        mId = instances.size();
-        heroes = new ArrayList<Hero>();
-        currentSize = 0;
+        this.squadId = instances.size();
+
     }
     public static List<Squad> all() {
 
         return instances;
     }
-    public static Squad find(int id) {
+    public int getSquadId(){return squadId;}
+    public static Squad findById(int id) {
         return instances.get(id - 1);
     }
-    public static void clear() {
-        instances.clear();
+    public String getSquadName() {return name;}
+    public boolean checkForMaxMembers(){
+        return myHeroes.size() <= this.maxSize;
     }
-    public List<Hero> getHeroes() {
-        return heroes;
+    public String getCause() {return this.squadCause;}
+    public static ArrayList<Squad> getAll(){return instances;}
+    public ArrayList<Hero> getMyHeroes(){
+        return myHeroes;
     }
-//    public void addHero(Hero newHero){
-//        heroes.add(newHero);
-//        currentSize++;
-//    }
-
-    public int getSize() {
-        return maxSize;
+    public List<Hero> getSquadHeroes(){
+        return this.squadHeroes;
     }
-    public void addHero(Hero hero) {
-        if (heroes.size()<this.getSize()) {
-            heroes.add(hero);
+    public boolean doesHeroExist(Hero hero){
+        int counter = 0;
+        for (Hero mHero : myHeroes) {
+            if (mHero.getName().equals(hero.getName())) {
+                counter++;
+            }
         }
+
+        return counter != 1;
     }
+    public String getName(){return this.name;}
+    public static void clearAllSquads(){ instances.clear(); }
 }

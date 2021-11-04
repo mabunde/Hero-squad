@@ -4,71 +4,73 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Hero {
-    private String heroName;
-    private String heroAge;
+    private String name;
+    private int heroAge;
     private String heroAbility;
     private String heroWeakness;
     private String heroSquad;
+    private int id;
     private static ArrayList<Hero> instances = new ArrayList<Hero>();
 
-    public Hero(String hero_name, String hero_age, String ability, String weakness, String hero_squad){
-        heroName = hero_name;
-        heroAge = hero_age;
+    public Hero(String name, int age, String ability, String weakness,String heroSquad){
+        name = name;
+        heroAge = age;
         heroAbility = ability;
         heroWeakness = weakness;
-        heroSquad = hero_squad;
+        heroSquad=heroSquad;
         instances.add(this);
+        this.id = instances.size();
     }
 
-    public String getHeroName() {
-        return heroName;
+    public String getName() {
+        return name;
+    }
+    public void setName(String heroName) {
+        this.name = heroName;
     }
 
-    public void setHeroName(String heroName) {
-        this.heroName = heroName;
+    public int getHeroAge() {
+       return this.heroAge;
     }
 
-    public String getHeroAge() {
-        return heroAge;
-    }
-
-    public void setHeroAge(String heroAge) {
-        this.heroAge = heroAge;
-    }
 
     public String getHeroAbility() {
         return heroAbility;
+    }
+
+    public void setHeroAge(int heroAge) {
+        this.heroAge = heroAge;
     }
 
     public void setHeroAbility(String heroAbility) {
         this.heroAbility = heroAbility;
     }
 
-    public String getHeroWeakness() {
-        return heroWeakness;
-    }
-
     public void setHeroWeakness(String heroWeakness) {
         this.heroWeakness = heroWeakness;
-    }
-
-    public String getHeroSquad() {
-        return heroSquad;
     }
 
     public void setHeroSquad(String heroSquad) {
         this.heroSquad = heroSquad;
     }
 
-    public static List<Hero> all() {
-        return instances;
+    public String getHeroWeakness() {
+        return heroWeakness;
     }
 
-    public static void setInstances(List<Hero> all) {
-        Hero.instances = instances;
-    }
-    public static void clear() {
+
+    public static ArrayList<Hero> getAll() {return instances;}
+    public static void clearAllHeroes(){instances.clear();}
+    public int getId(){return id;}
+    public static void clearHeroes() {
         instances.clear();
+    }
+    public static Hero findById(int id) {
+        return instances.get(id - 1);
+    }
+    public void deleteHero(){
+        instances.remove(id - 1);
     }
 
 }
+

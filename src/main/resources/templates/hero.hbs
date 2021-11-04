@@ -1,83 +1,44 @@
-{{> "layout.hbs"}}
+{{#partial "content"}}
+
 <div class="row">
-<div class="col-md-4">
-          <div class="header">
-              <p class="heroheader">Add a new hero</P>
-          </div>
-          <div class="">
-             <form action="/newHero" method="post" name="heroForm">
-                <input class="form-control" type="text" placeholder="Enter Hero Name..." name="hero_name"><br>
-                 <input class="form-control" name="hero_age" placeholder="Enter Hero's Age..." type="number" /><br>
-                 <select class="form-control" name="hero_ability" placeholder="Choose Special Ability">
-                      <option label="Choose Special Ability"></option>
-                      <option value="Superhuman Strength">Superhuman Strength</option>
-                      <option value="Camouflage">Camouflage</option>
-                      <option value="Invisibility">Invisibility</option>
-                      <option value="Shape Shifting">Shape Shifting</option>
-                      <option value="Super Speed">Super Speed</option>
-                      <option value="Elemental control">Elemental control</option>
-                      <option value="Mind Control">Mind Control</option>
-                      <option value="Liquid Transmutation">Liquid Transmutation</option>
-                      <option value="Flight">Flight</option>
-                      <option value="Replication">Replication</option>
-                  </select>
-                  <br>
-                  <select class="form-control" name="hero_weakness" data-placeholder="Choose Weakness">
-                      <option label="Choose Weakness"></option>
-                      <option value="Loud Noises">Loud Noises</option>
-                      <option value="Excessive Speed">Excessive Speed</option>
-                      <option value="Pink Kryptonite">Pink Kryptonite</option>
-                      <option value="Over Confidence">Over Confidence</option>
-                      <option value="Women">Women</option>
-                      <option value="Fire">Fire</option>
-                  </select>
-                  <br>
-                  <select class="form-control" name="hero_squad" data-placeholder="Assign a Squad">
-                  <select class="custom-select" id="squadId" name="squadId" required>
-                                  {{#each squads}}
-                                      <option value="{mId}}">{{squad_name}}</option>
-                                  {{/each}}
-                  </select>
-                  </select>
-                   <br><button type="submit" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Add Character</button>
-             </form>
-          </div>
-         </div>
-{{!--          <div class="col-md-8"> --}}
-{{!--              <div class="panel panel"> --}}
-{{!--                  <div class="panel-body"> --}}
-{{!--                      <h3>Heroes</h3> --}}
-{{!--                      <hr> --}}
-{{!--                      {{#if hero_squad}} --}}
-{{!--                      <ul> --}}
-{{!--                          {{#each hero in hero_squad}} --}}
-{{!--                          <li> --}}
-{{!--                              <h4 class="hero-name">{{hero}}.getName() {{hero}}.getAge()</h4> --}}
-{{!--                              <small><strong class="text-success">Special Ability: </strong> {{ hero}}.getAbility() | <strong class="text-danger">Weakness: </strong>{{hero}}.getWeakness()</small> --}}
-{{!--                          </li> --}}
-{{!--                          {{/each}} --}}
-{{!--                      </ul> --}}
-{{!--                      {{else}} --}}
-{{!--                          <span class="label label-warning">No Heroes Added Yet!</span> --}}
-{{!--                      {{/if}} --}}
-{{!--                  </div> --}}
-{{!--              </div> --}}
-{{!--              <div class="panel squads"> --}}
-{{!--                  <div class="panel-body"> --}}
-{{!--                      <h3>Squads / Team Ups</h3> --}}
-{{!--                      <hr> --}}
-{{!--                      {{#if squad_hero}} --}}
-{{!--                      <ul> --}}
-{{!--                          {{#each squad in squad_hero}} --}}
-{{!--                          <li class="mt10"> --}}
-{{!--                              <small class="pull-right"><strong>Max Size: </strong>$squad.getMaxSize()</small> --}}
-{{!--                              <h4 class="squad-name">$squad.getSquadName()</h4> --}}
-{{!--                              <small>Cause / Motive: <strong>$squad.getSquadCause()</strong></small><br> --}}
-{{!--                              <small><i class="fa fa-angle-right" aria-hidden="true"></i>&nbsp;&nbsp;<a href="/squad/$squad.getId()">View Squad Members</a></small> --}}
-{{!--                          </li> --}}
-{{!--                          {{/each}} --}}
-{{!--                      </ul> --}}
-{{!--                      {{/if}} --}}
-{{!--                  </div> --}}
-{{!--              </div> --}}
-      </div>
+<div class="col-md-6">
+    <h1>Add a new Hero:</h1>
+
+    <form action="/heroes/new" method="POST">
+        <div class="form-group">
+            <label for="name">Name of Hero</label>
+            <input id="name" name="name" type="text" class="form-control" style="margin-bottom: 40px;" placeholder="Enter Hero Name Here...">
+        </div>
+
+        <div class="form-group">
+            <label for="age">Age</label>
+            <input id="age" name="age" type="text" class="form-control" style="margin-bottom: 40px;" placeholder="Enter Age Here...">
+        </div>
+
+        <div class="form-group">
+            <label for="heroAbility">Special Power</label>
+            <input id="heroAbility" name="heroAbility" type="text" class="form-control" style="margin-bottom: 40px;" placeholder="Enter Special Power...">
+        </div>
+
+        <div class="form-group">
+            <label for="heroWeakness">Weakness</label>
+            <input id="heroWeakness" name="heroWeakness" type="text" class="form-control" style="margin-bottom: 40px;" placeholder="Enter Weakness...">
+        </div>
+
+        <div class="form-group">
+            <label for="selected-squad">Squad</label>
+            <select name="selected-squad" id="selected-squad" class="form-control">
+                {{#each squads}}
+                    <option value="{{id}}">{{name}}</option>
+                {{/each}}
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Hero</button>
+    </form>
+ </div>
+</div>
+
+{{/partial}}
+
+{{> layout.hbs}}
