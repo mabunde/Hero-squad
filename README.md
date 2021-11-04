@@ -1,8 +1,9 @@
-# Author
+# Hero squad
+## Author
 By Sitati Solomon
 
 ## Description
-Caesar cipher program is a type of substitution in which each letter is shifted a certain number of places by using a key, down the alphabet.
+Hero Squad is a fictional app that allows you to recruit a well-balanced team of superheroes who belong to different fighting squads.
 
 ## Setup/Installation Requirements
 * git clone https://github.com/mabunde/Hero-squad.git

@@ -23,7 +23,6 @@ public class App {
 
         get("/", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
-
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -51,7 +50,7 @@ public class App {
             return new ModelAndView(model, "stats.hbs");
         }, new HandlebarsTemplateEngine());
 
-        // Squads form
+        // new Squads
         post("/squads/new", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             String squad = request.queryParams("squad");
@@ -59,11 +58,10 @@ public class App {
             Squad newSquad = new Squad(squad, squadCause);
             model.put("squad",squad);
             model.put("cause", squadCause);
-
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
-        // Heroes
+        // Heroes form
         get("/heroes", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             ArrayList<Hero> foundHero = Hero.getAll();
@@ -72,7 +70,6 @@ public class App {
             model.put("squads", allSquads);
             return new ModelAndView(model, "hero.hbs");
         }, new HandlebarsTemplateEngine());
-
         // All Heroes
         get("/heroes/list", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
@@ -81,6 +78,7 @@ public class App {
             return new ModelAndView(model, "allheroes.hbs");
         }, new HandlebarsTemplateEngine());
 
+        // hero Id update
         get("/heroes/:id/update", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             int idOfHeroToEdit = Integer.parseInt(request.params("id"));
@@ -89,34 +87,7 @@ public class App {
             return new ModelAndView(model, "heroform.hbs");
         }, new HandlebarsTemplateEngine());
 
-        // Heroes form
-        post("/heroes/:id/update", (request, response) -> {
-            Map<String, Object> model = new HashMap<>();
-            int idOfHeroToEdit = Integer.parseInt(request.params("id"));
-            Hero editHero = Hero.findById(idOfHeroToEdit);
-            String name = request.queryParams("name");
-            int age = Integer.parseInt(request.queryParams("age"));
-            String heroAbility = request.queryParams("heroAbility");
-            String heroWeakness = request.queryParams("heroWeakness");
-            int selectedSquadId = Integer.parseInt(request.queryParams("selected-squad"));
-            ArrayList<Squad> allSquads = Squad.getAll();
-            Squad selectedSquad = Squad.findById(selectedSquadId);
-            String squadName = selectedSquad.getName();
-            editHero.setName(name);
-            editHero.setHeroAge(age);
-            editHero.setHeroAbility(heroAbility);
-            editHero.setHeroWeakness(heroWeakness);
-            editHero.setHeroSquad(squadName);
-            model.put("editHero", editHero);
-            model.put("name", name);
-            model.put("age", age);
-            model.put("specialPower", heroAbility);
-            model.put("weakness", heroWeakness);
-            model.put("squadName", squadName);
-            return new ModelAndView(model, "hero-success.hbs");
-        }, new HandlebarsTemplateEngine());
-
-        // Heroes form
+        // New Heroes form
         post("/heroes/new", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             String name = request.queryParams("name");
@@ -132,7 +103,7 @@ public class App {
             model.put("age", age);
             model.put("heroAbility", heroAbility);
             model.put("heroWeakness", heroWeakness);
-            model.put("squads", allSquads);
+            model.put("allSquads", allSquads);
             model.put("squadName", squadName);
             model.put("newHero", newHero);
             return new ModelAndView(model, "hero-success.hbs");
